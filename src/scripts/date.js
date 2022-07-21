@@ -40,7 +40,7 @@ const getWeek = (current) => {
   const createObjectDate = (index) => {
     const week = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
     const dateWeek = new Date(index);
-		const currentYear = dateWeek.getFullYear();
+    const currentYear = dateWeek.getFullYear();
     const currentDay = dateWeek.getDate();
     const currentWeekDay = dateWeek.getDay();
     const currentMonth = dateWeek.getMonth();
@@ -51,7 +51,7 @@ const getWeek = (current) => {
         currentMonth + 1 < 10 ? '0' + (+currentMonth + 1) : +currentMonth + 1
       }`,
       day: week[currentWeekDay],
-			year: currentYear,
+      year: currentYear,
     };
     result.push(obj);
   };
@@ -74,16 +74,15 @@ const setDateWeek = () => {
   if (list) {
     list.innerHTML = '';
     getWeek(currentDate).forEach((item) => {
-      const li = document.createElement('li');
-      li.classList.add('calendar__date-item');
+      const html = `
+				<li class="calendar__date-item">
+					<p class="calendar__date-text" data-year="${item.year}">
+						${item.date}.${item.month} (${item.day})
+					</p>
+				</li>
+			`;
 
-      const p = document.createElement('p');
-      p.classList.add('calendar__date-text');
-      p.textContent = `${item.date}.${item.month} (${item.day})`;
-			p.dataset.year = item.year;
-
-      li.appendChild(p);
-      list.appendChild(li);
+      list.innerHTML += html;
     });
   }
 };

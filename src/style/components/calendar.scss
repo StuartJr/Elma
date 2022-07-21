@@ -2,7 +2,11 @@
 	margin-right: 20px;
 	width: 100%;
 	max-width: 970px;
-	border-bottom: 1px solid $color-grey;
+
+	@media screen and (max-width: $tablet) {
+		max-width: 100%;
+		margin-right: 0;
+	}
 
 	&__buttons {
 		width: 100%;
@@ -60,6 +64,10 @@
 		width: 100%;
 		max-width: 970px;
 		border: 1px solid $color-grey;
+
+		@media screen and (max-width: $tablet) {
+			max-width: 100%;
+		}
 	}
 
 	&__date {
@@ -96,6 +104,11 @@
 		width: 100%;
 		max-height: 651px;
 		overflow: auto;
+		border-bottom: 1px solid $color-grey;
+
+		//@media screen and (max-width: $tablet) {
+		//	max-height: 100%;
+		//}
 
 		&::-webkit-scrollbar {
 			width: 0;

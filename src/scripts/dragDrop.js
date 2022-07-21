@@ -25,7 +25,6 @@ export function dragDrop() {
             executor: +executor,
             subject: subject,
             id: blockId,
-            status: 1,
           };
 
           list.push(obj);
@@ -45,7 +44,6 @@ export function dragDrop() {
             executor: +executor,
             subject: subject,
             id: blockId,
-            status: 1,
           };
 
           list.push(obj);
@@ -101,18 +99,24 @@ export function dragDrop() {
       // Добавление новой задачи в таблицу
       const addTaskInTable = (elem) => {
         const titleTask = block.querySelector('.backlog__title');
+        const date = elem.dataset.date;
+        const year = elem.dataset.year;
+        const dateFormat = `${year}-${date.split('.')[1]}-${
+          date.split('.')[0]
+        }`;
+        const status = new Date(dateFormat).getTime() >= new Date().getTime();
 
-        const div = document.createElement('div');
-        div.classList.add('calendar__task');
-        div.classList.add('error');
-        div.dataset.title = `${titleTask.textContent}`;
+        const html = `
+					<div class="calendar__task ${status ? 'success' : 'error'}" data-title="${
+          titleTask.textContent
+        }">
+						<div class="calendar__task-text">
+							Задача
+						</div>
+					</div>
+				`;
 
-        const text = document.createElement('div');
-        text.classList.add('calendar__task-text');
-        text.textContent = 'Задача';
-
-        div.appendChild(text);
-        elem.appendChild(div);
+        elem.innerHTML += html;
 
         deleteTaskBacklog();
         saveData(elem);
