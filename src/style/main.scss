@@ -1,0 +1,40 @@
+@import './fonts';
+@import './variables';
+@import './normalize';
+@import './components/preloader.scss';
+@import './components/backlog.scss';
+@import './components/calendar.scss';
+
+html {
+	font-family: 'DIN Pro';
+	font-weight: 400;
+	font-style: normal;
+}
+
+.main {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&__wrapper {
+		height: 100%;
+		width: 100%;
+		display: flex;
+	}
+}
+
+.container {
+	padding: 100px 20px;
+	max-width: 1420px;
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+}
+
+.block {
+	width: 200px;
+	height: 200px;
+	background: $color-ligh-grey;
+	cursor: pointer;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <section class="preloader">
+      <div class="preloader__wrapper">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </section>
+    <section class="main">
+      <div class="container">
+        <div class="main__wrapper">
+          <div class="calendar">
+						<div class="calendar__buttons">
+							<button class="calendar__button calendar__button--left"></button>
+							<button class="calendar__button calendar__button--right"></button>
+						</div>
+						<div class="calendar__header">
+							<ul class="calendar__date">
+							</ul>
+						</div>
+						<div class="calendar__content">
+							<ul class="calendar__users">
+							</ul>
+						</div>
+					</div>
+          <div class="backlog">
+            <div class="backlog__wrapper">
+              <div class="backlog__search">
+                <input type="text" class="backlog__input" placeholder="Поиск" disabled/>
+              </div>
+              <ul class="backlog__list">
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
