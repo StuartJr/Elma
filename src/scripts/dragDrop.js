@@ -123,6 +123,7 @@ export function dragDrop() {
       };
 
       const onMouseMove = (e) => {
+				document.body.style.overflow = 'hidden';
         moveAt(e.pageX, e.pageY);
         let elem = document.elementFromPoint(e.pageX, e.pageY + 40);
         setHoverElem(elem);
@@ -195,6 +196,7 @@ export function dragDrop() {
 
           block.onmouseup = null;
           block.style.position = 'inherit';
+					document.body.style.overflow = 'inherit';
 
           clearItemsHover();
           setTasks(e);
