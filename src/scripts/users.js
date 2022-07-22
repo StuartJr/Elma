@@ -1,6 +1,7 @@
 export function setUserList(users, tasks) {
   const list = document.querySelector('.calendar__users');
 
+  //Добавление атрибутов к ячейкам недели пользователя
   const setDateForTask = () => {
     const tables = document.querySelectorAll('.calendar__table');
     const date = document.querySelectorAll('.calendar__date-text');
@@ -10,7 +11,9 @@ export function setUserList(users, tasks) {
         const items = table.querySelectorAll('.calendar__table-item');
         if (items) {
           date.forEach((elem, index) => {
-            items[index].dataset.date = `${elem.textContent.split(' ')[0].trim()}`;
+            items[index].dataset.date = `${elem.textContent
+              .split(' ')[0]
+              .trim()}`;
             items[index].dataset.year = elem.dataset.year;
           });
         }
@@ -25,7 +28,7 @@ export function setUserList(users, tasks) {
       const date = new Date(item.planEndDate);
       const day = date.getDate();
       const month = date.getMonth() + 1;
-			const status = new Date(date).getTime() >= new Date().getTime();
+      const status = new Date(date).getTime() >= new Date().getTime();
       const currentData = `${day < 10 ? '0' + day : day}.${
         month < 10 ? '0' + month : month
       }`;
@@ -37,7 +40,7 @@ export function setUserList(users, tasks) {
           if (+currentData === +dateData && +userId === +userIdData) {
             const html = `
 							<div class="calendar__task ${
-								status ? 'success' : 'error'
+                status ? 'success' : 'error'
               }" data-title="${title.trim()}">
 								<div class="calendar__task-text">
 									Задача
@@ -71,6 +74,7 @@ export function setUserList(users, tasks) {
     setUserAndTask(getLocalList(), blocks);
   };
 
+  //Кнопки для переключения недель
   const setButton = () => {
     const next = document.querySelector('.calendar__button--right');
     const prev = document.querySelector('.calendar__button--left');
@@ -87,6 +91,7 @@ export function setUserList(users, tasks) {
     }
   };
 
+  //Установка пользователей и его расписания
   if (list) {
     users.forEach((user) => {
       let html = `

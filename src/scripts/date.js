@@ -8,6 +8,7 @@ let currentDate = `${year}-${month < 10 ? '0' + (+month + 1) : +month + 1}-${
   monthDay < 10 ? '0' + monthDay : monthDay
 }`;
 
+//Кол-во дней в каждом месяце
 const getLastDay = () => {
   let list = [];
   for (let index = 0; index <= 11; index++) {
@@ -17,6 +18,7 @@ const getLastDay = () => {
   return list;
 };
 
+//Установка текущей недели
 const getWeek = (current) => {
   let result = [];
   let curr = new Date(current);
@@ -63,12 +65,14 @@ const getWeek = (current) => {
   return result;
 };
 
+//Получение даты след/пред недели
 const setCurrentDate = () => {
   currentDate = `${year}-${month + 1 < 10 ? '0' + (+month + 1) : +month + 1}-${
     monthDay < 10 ? '0' + monthDay : monthDay
   }`;
 };
 
+//Рендер дней недели
 const setDateWeek = () => {
   const list = document.querySelector('.calendar__date');
   if (list) {
@@ -87,6 +91,18 @@ const setDateWeek = () => {
   }
 };
 
+const setYear = () => {
+  const header = document.querySelector('.calendar__header');
+  const elementYear = document.querySelector('.calendar__year');
+  if (elementYear) {
+    elementYear.textContent = `${year} г.`;
+  } else {
+    const html = `<p class="calendar__year">${year} г.</p>`;
+    header.innerHTML += html;
+  }
+};
+
+//Кнопки переключения недель
 const setButton = () => {
   const next = document.querySelector('.calendar__button--right');
   const prev = document.querySelector('.calendar__button--left');
@@ -95,8 +111,14 @@ const setButton = () => {
     next.addEventListener('click', () => {
       monthDay += 7;
       if (monthDay > getLastDay()[month]) {
-        month += 1;
         monthDay = monthDay - getLastDay()[month];
+        month += 1;
+
+        if (month === 12) {
+          year += 1;
+          month = 0;
+          setYear();
+        }
       }
       setCurrentDate();
       setDateWeek();
@@ -105,6 +127,11 @@ const setButton = () => {
       monthDay -= 7;
       if (monthDay <= 0) {
         month -= 1;
+        if (month < 0) {
+          year -= 1;
+          month = 11;
+          setYear();
+        }
         monthDay = getLastDay()[month] + monthDay;
       }
       setCurrentDate();
@@ -115,3 +142,4 @@ const setButton = () => {
 
 setDateWeek();
 setButton();
+setYear();

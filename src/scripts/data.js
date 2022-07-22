@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function hiddenLoader() {
+  const hiddenLoader = () => {
     const loader = document.querySelector('.preloader');
     if (loader) {
 			setBacklogTasks(tasks)

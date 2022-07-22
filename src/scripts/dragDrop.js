@@ -128,6 +128,7 @@ export function dragDrop() {
         setHoverElem(elem);
       };
 
+			//Установка задачи если перенеси её на пользователя
       const setUserTask = (elem) => {
         let isCurrentWeek = false;
         const userId = elem.dataset.userId;

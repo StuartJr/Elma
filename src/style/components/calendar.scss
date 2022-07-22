@@ -14,6 +14,10 @@
 		justify-content: space-between;
 		align-items: center;
 		height: 80px;
+
+		//@media screen and (max-width: $tablet) {
+		//	min-width: 980px;
+		//}
 	}
 
 	&__button {
@@ -58,16 +62,48 @@
 			}
 		}
 
+		@media screen and (max-width: $tablet) {
+			position: fixed;
+
+			&--right {
+				right: 20px;
+			}
+
+			&--left {
+				left: 20px;
+			}
+		}
+
+	}
+
+	&__container {
+		@media screen and (max-width: $tablet) {
+			min-width: 890px;
+		}
 	}
 
 	&__header {
 		width: 100%;
 		max-width: 970px;
 		border: 1px solid $color-grey;
+		position: relative;
 
 		@media screen and (max-width: $tablet) {
 			max-width: 100%;
 		}
+	}
+
+	&__year {
+		font-size: 18px;
+		line-height: 16px;
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 30px;
+		width: 120px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	&__date {

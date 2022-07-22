@@ -4,6 +4,7 @@ export function setBacklogTasks(list) {
   const wrapper = document.querySelector('.backlog__list');
   const input = document.querySelector('.backlog__input');
 
+	//Поиск в backlog
   const searchTask = () => {
     const tasks = document.querySelectorAll('.backlog__item');
     input.addEventListener('input', (e) => {
@@ -19,6 +20,7 @@ export function setBacklogTasks(list) {
     });
   };
 
+	//Проверка зада в localstorage
   const getLocalTask = (item) => {
     const storage = localStorage.getItem('TasksList');
     const list = storage ? JSON.parse(storage) : [];
@@ -27,6 +29,7 @@ export function setBacklogTasks(list) {
     return !list.find((element) => element.id === id);
   };
 
+	//Добавление задач в backlog
   const initBacklog = () => {
     if (wrapper) {
       const backlog = list.filter(
